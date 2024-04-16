@@ -1,5 +1,3 @@
-
-
 Feature: localization
 Background: 
   Given open the application

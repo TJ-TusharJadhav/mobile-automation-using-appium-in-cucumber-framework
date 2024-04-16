@@ -1,9 +1,5 @@
 package stepdefination;
-
-import java.util.List;
-
 import org.openqa.selenium.By;
-
 import Testbase.Testbase;
 import Utility.Scroll;
 import Utility.Scroll.ScrollDiretion;

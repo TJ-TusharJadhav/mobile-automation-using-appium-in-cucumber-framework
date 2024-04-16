@@ -1,22 +1,28 @@
 package Testbase;
 
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.util.Set;
+
+
+import org.openqa.selenium.ContextAware;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
+import locaters.button;
+import locaters.xpath;
 public class Testbase {
 	
 	public static AndroidDriver driver;
 	public String appiumServer="127.0.0.1";
 	public int appiumPort=4723;
 	URL appiumURl=null;
-
+	public static xpath xpath=new xpath();
+	public static button button=new button();
 	public AndroidDriver initializerDriver() {
 
 		try {
 			appiumURl=new URL("http://"+appiumServer+":"+appiumPort+"/wd/hub");
 			driver=new AndroidDriver(appiumURl,setAppCapabilitiesAndroid());
-			driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+			driver.manage().timeouts();
 		}
 
 		catch(Exception e) {
@@ -30,8 +36,8 @@ public class Testbase {
 		DesiredCapabilities cap= new DesiredCapabilities();
 		cap.setCapability("platformName", "Android");
         cap.setCapability("platformVersion", "12");
-        cap.setCapability("deviceName", "android12");
-        cap.setCapability("app", "D:\\apkfile\\13.apk"); 
+        cap.setCapability("deviceName", "Pixel API 31");
+        cap.setCapability("app", "F:\\app-release.apk"); 
         cap.setCapability("automationName", "UiAutomator2");
 		cap.setCapability("newCommandTimeout", 157);
 		
@@ -46,7 +52,9 @@ public class Testbase {
       
 	public void initialize() {
 		driver= initializerDriver();
+	
 		
-		
-}
-}
+	}
+
+
+	}

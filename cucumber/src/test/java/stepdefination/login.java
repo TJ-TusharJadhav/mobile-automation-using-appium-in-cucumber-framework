@@ -5,31 +5,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import Testbase.Testbase;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
 public class login extends Testbase {
-	
-@Before
-	public void loginsetup() { initialize();}
-//@After
-//	public void quit() {driver.quit();}	
 
-	 @Given("open the application")
+	 @Given("open application")
 	 public void open_the_application(){
-		 initialize(); 
+		 initialize();
 	 }
 	
 	 @When("^user enters the email as (.+)$")
 	    public void user_enters_the_email_as(String abc){
-		WebElement email = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]"));
+		WebElement email = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ImageView[2]"));
 		Actions a=new Actions(driver);
 	   a.moveToElement(email).click().perform();
 	   email.sendKeys(abc);
 	    }
 	    @And("^user enters the password as (.+)$")
 	    public void user_enters_the_password_as(String abc){
-	    	 WebElement password = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText"));
+	    	 WebElement password = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText"));
 	    	 Actions a=new Actions(driver);
 	  	   a.moveToElement(password).click().perform();
 	  	 password.sendKeys(abc);
