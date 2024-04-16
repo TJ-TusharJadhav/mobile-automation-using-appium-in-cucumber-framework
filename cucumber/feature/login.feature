@@ -1,8 +1,7 @@
-
 Feature: Login page validation 
  Background:  
- Given open the application
- @tag1
+ Given open application
+
   Scenario Outline: verify the login with valid credentials
      
      When user enters the email as <email>
