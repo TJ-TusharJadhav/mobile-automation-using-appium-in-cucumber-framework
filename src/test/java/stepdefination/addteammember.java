@@ -29,18 +29,18 @@ public class addteammember extends TestBase  {
 	}
 	
 	@When("I enter the email {string}")
-	public void i_enter_the_email(String string) {
+	public void i_enter_the_email(String string) throws InterruptedException {
 		WebElement email = driver.findElement(By.xpath(xpath.login_Email));
 		Actions a=new Actions(driver);
-	   a.moveToElement(email).click().perform();
+	   a.moveToElement(email).click().perform();Thread.sleep(1000);
 	   email.sendKeys(string);
 	}
 
 	@When("I enter the password {string}")
-	public void i_enter_the_password(String string) {
+	public void i_enter_the_password(String string) throws InterruptedException {
 		 WebElement password = driver.findElement(By.xpath(xpath.login_password));
     	 Actions a=new Actions(driver);
-  	   a.moveToElement(password).click().perform();
+  	   a.moveToElement(password).click().perform();Thread.sleep(1000);
   	 password.sendKeys(string);  
 	}
 
@@ -66,7 +66,7 @@ public class addteammember extends TestBase  {
 	public void enter_first_name(String string) throws InterruptedException {
 		 WebElement first = driver.findElement(By.xpath(xpath.firstname));
     	 Actions a=new Actions(driver);
-  	   a.moveToElement(first).click().perform();
+  	   a.moveToElement(first).click().perform();Thread.sleep(1000);
   	 first.sendKeys(string);     
   	Thread.sleep(1000);
 	}
@@ -75,7 +75,7 @@ public class addteammember extends TestBase  {
 	public void enter_last_name(String string) throws InterruptedException {
 		WebElement last = driver.findElement(By.xpath(xpath.lastname));
    	 Actions a=new Actions(driver);
- 	   a.moveToElement(last).click().perform();
+ 	   a.moveToElement(last).click().perform();Thread.sleep(1000);
  	  last.sendKeys(string);
  	 Thread.sleep(1000);
 	}
@@ -84,22 +84,21 @@ public class addteammember extends TestBase  {
 	public void enter_email() throws InterruptedException {
 		 WebElement email = driver.findElement(By.xpath(xpath.email));
     	 Actions a=new Actions(driver);
-  	   a.moveToElement(email).click().perform();
-//  	 email.sendKeys("tj."+Email+"@mailinator.com");
-//  	 email.sendKeys("tj1232@mailinator.com");
-// 	Thread.sleep(1000);
+  	   a.moveToElement(email).click().perform();Thread.sleep(1000);
+  	 email.sendKeys("tj."+Email+"@mailinator.com");
+ 	Thread.sleep(1000);
  	
  	
 //    actualemail = gen.mailgerator();
-    email.sendKeys(actualemail);
-    System.out.println(actualemail);
+//    email.sendKeys(actualemail);
+//    System.out.println(actualemail);
 	}
 
 	@When("Enter phone {string}")
 	public void enter_phone(String string) throws InterruptedException {
 		 WebElement phone = driver.findElement(By.xpath(xpath.phone));
     	 Actions a=new Actions(driver);
-  	   a.moveToElement(phone).click().perform();
+  	   a.moveToElement(phone).click().perform();Thread.sleep(1000);
   	 phone.sendKeys(string); 
   	Thread.sleep(1000);
   	Scroll.scroll(ScrollDiretion.DOWN,0.4); 
@@ -108,11 +107,11 @@ public class addteammember extends TestBase  {
 
 	@When("Enter address {string}")
 	public void enter_address(String string) throws InterruptedException{
-		 WebElement address = driver.findElement(By.xpath(xpath.address));Thread.sleep(2000);
+		 WebElement address = driver.findElement(By.xpath(xpath.address));
     	 Actions a=new Actions(driver);
-  	   a.moveToElement(address).click().perform();
+  	   a.moveToElement(address).click().perform();Thread.sleep(2000);
   	 address.sendKeys(string); 
-  	Thread.sleep(2000);
+  	
   	 Scroll.scroll(ScrollDiretion.DOWN,0.2); 
 	}
 
@@ -155,7 +154,7 @@ public class addteammember extends TestBase  {
 	public void enter_pincode(String string) throws InterruptedException {
  WebElement p=driver.findElement(By.xpath(xpath.pincode));
  		Actions a=new Actions(driver);
-  	   a.moveToElement(p).click().perform();
+  	   a.moveToElement(p).click().perform();Thread.sleep(1000);
   	 p.sendKeys(string); 
   	Thread.sleep(3000);
   	Scroll.scroll(ScrollDiretion.DOWN,0.3); 
@@ -182,10 +181,10 @@ driver.findElement(By.xpath(xpath.selected_timezone)).click();
 	}
 
 	@When("enter job title {string}")
-	public void enter_job_title(String string) {
+	public void enter_job_title(String string) throws InterruptedException {
 		 WebElement title = driver.findElement(By.xpath(xpath.joining_date));
    	 Actions a=new Actions(driver);
- 	   a.moveToElement(title).click().perform();
+ 	   a.moveToElement(title).click().perform();Thread.sleep(1000);
  	 title.sendKeys(string);    
 	}
 

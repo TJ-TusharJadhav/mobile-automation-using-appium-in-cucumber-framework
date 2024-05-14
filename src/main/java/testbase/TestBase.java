@@ -33,9 +33,9 @@ public class TestBase {
 	public DesiredCapabilities setAppCapabilitiesAndroid() {
 		DesiredCapabilities cap= new DesiredCapabilities();
 		cap.setCapability("platformName", "Android");
-//        cap.setCapability("platformVersion", "12");
+        cap.setCapability("platformVersion", "12");
         cap.setCapability("deviceName", "emulator-5554");
-        cap.setCapability("app", "D:\\APK\\app-debug.apk"); 
+        cap.setCapability("app", "D:\\employee-app\\build\\app\\outputs\\apk\\debug\\app-debug.apk"); 
         cap.setCapability("automationName", "UiAutomator2");
 		cap.setCapability("newCommandTimeout", 157);
 		

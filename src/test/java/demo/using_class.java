@@ -1,35 +1,38 @@
 package demo;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Pause;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
-
-import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-
-
 import testbase.TestBase;
-public class picker extends TestBase {
 
-	public static void main(String[] args) throws MalformedURLException, InterruptedException, ParseException  {
+public class using_class extends TestBase {
+
+	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		DesiredCapabilities cap= new DesiredCapabilities();
 		cap.setCapability("platformName", "Android");
-        cap.setCapability("platformVersion", "12");
-        cap.setCapability("deviceName", "emulator-5554");
-        cap.setCapability("app", "D:\\APK\\app-debug.apk"); 
+//        cap.setCapability("platformVersion", "12");
+//        cap.setCapability("deviceName", "emulator-5554");
+        cap.setCapability("app", "E:\\master1\\build\\app\\outputs\\flutter-apk\\app-release.apk"); 
 //        cap.setCapability("app", "D:\\employee-app\\build\\app\\outputs\\flutter-apk\\app-debug.apk");
         cap.setCapability("automationName", "UiAutomator2");
 		cap.setCapability("newCommandTimeout", 3000);
-		
+		cap.setCapability("", "");
 		URL url=new URL("http://127.0.0.1:4723/wd/hub");
 		AndroidDriver driver=new AndroidDriver(url,cap);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -76,61 +79,36 @@ public class picker extends TestBase {
      String Date = "//android.view.View[@content-desc=\"" + date + ", " + dayName + ", " + month + " " + date + ", " + year + "\"]";         
         
      driver.findElement(By.xpath(Date)).click();
-//Form timing 
-        int DeductionHours = Integer.parseInt(hours) - 1;
-		String DeductionHoursFormatted = String.format("%02d", DeductionHours);
-        String xpathhours = "(//android.view.View[@content-desc='" + DeductionHoursFormatted + "'])[1]";
-		driver.findElement(By.xpath(xpathhours)).click();Thread.sleep(1000);
-
-		int DeductionMinutes = Integer.parseInt(Minutes) - 1;
-		String DeductionMinutesFormatted = String.format("%02d", DeductionMinutes);
-        String xpathMinutes = "(//android.view.View[@content-desc='" + DeductionMinutesFormatted + "'])[1]";
-        driver.findElement(By.xpath(xpathMinutes)).click();Thread.sleep(1000);
-//        driver.findElement(By.xpath("(//android.view.View[@content-desc=\"AM\"])[1]")).click();
-//        driver.findElement(By.xpath("(//android.view.View[@content-desc=\"PM\"])[1]")).click();
-//To timing
-        int IncreaseHours1 = Integer.parseInt(hours) + 1; 
-		String IncreaseHoursFormatted1 = String.format("%02d", IncreaseHours1);
-        String xpathhours1 = "(//android.view.View[@content-desc='" + IncreaseHoursFormatted1 + "'])";
-		driver.findElement(By.xpath(xpathhours1)).click();Thread.sleep(1000);
- 
-		int IncreaseMinutes1 = Integer.parseInt(Minutes) + 1;
-		String IncreaseMinutesFormatted1 = String.format("%02d", IncreaseMinutes1);
-        String xpathMinutes1 = "(//android.view.View[@content-desc='" + IncreaseMinutesFormatted1 + "'])";
-        driver.findElement(By.xpath(xpathMinutes1)).click();Thread.sleep(1000);
-//        driver.findElement(By.xpath("(//android.view.View[@content-desc=\"AM\"])[2]")).click();
-//        driver.findElement(By.xpath("(//android.view.View[@content-desc=\"PM\"])[2]")).click();
-        
-        
-        
-		
-        driver.findElement(By.xpath("//android.widget.Button[@content-desc=\"SAVE\"]")).click();
-       
-//		validation
-       /* in Xpath added From and To time 
-		String xpathValidate = "//android.view.View[@content-desc=\""+fulldate1 +"\n"+DeductionHoursFormatted + ":" +DeductionMinutesFormatted+" "+AMPM+"\n"+" to"+"\n"+to+" "+AMPM+"\n"+"2h 2m" + "\"]";
-		*/
-		String xpathValidate = "//android.view.View[@content-desc=\""+fulldate1 +"\n"+DeductionHoursFormatted + ":" +DeductionMinutesFormatted+" "+AMPM+"\n"+"2h 2m" + "\"]";
-//       Edit Time entry
-		String EditTimeEntry = xpathValidate+"/android.widget.ImageView[1]"; 
-		driver.findElement(By.xpath(EditTimeEntry)).click();
-		
-
-////        Delete Time entry
-//        String DeleteTimeEntry = xpathValidate+"/android.widget.ImageView[2]"; 
-//        driver.findElement(By.xpath(DeleteTimeEntry)).click();
-//        driver.findElement(By.xpath(button.YES)).click();
-        
-      
-//      Thread.sleep(1000);  
-//      driver.quit();
-     
-
-		
-
-        
     
-  
+	//Get Screen size
+			Dimension size = driver.manage().window().getSize();
+			
+			//find the position where you need to touch
+			int startX = size.getWidth() / 2;
+			int startY = size.getHeight() / 2;
+			
+			
+			//position till you want to move your finger to swipe
+			int endX = startX;
+			int endY = (int) (size.getHeight() * 0.25);
+			
+			//PointerInput class to create a sequence of actions 
+			PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
+			
+			//Sequence object, which is a list of actions that will be performed on the device
+			Sequence sequence = new Sequence(finger1, 1)
+					.addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+					.addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+					.addAction(new Pause(finger1, Duration.ofMillis(200))) //wait for some time
+					.addAction(finger1.createPointerMove(Duration.ofMillis(100), PointerInput.Origin.viewport(), endX, endY))
+					.addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); 
+
+			//perform the Sequence of action
+			driver.perform(Collections.singletonList(sequence));
+			System.out.print("pass");
+			Thread.sleep(5000);
+			driver.quit();
+	
 	}
 
 }

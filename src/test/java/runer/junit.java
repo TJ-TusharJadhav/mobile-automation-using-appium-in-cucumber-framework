@@ -9,10 +9,10 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 //		dryRun=true,
 		monochrome = true,
-		features =  {"feature\\login.feature"},
+		features =  {"feature\\addproject.feature"},
 		
 //		features =  {"feature"},
-//		tags="@tag1",
+		tags="@tag11",
         glue={"stepdefination"}	,
 //      
         plugin= {"pretty", "html:target/cucumber-reports","html:target/cucumber-html-report"}

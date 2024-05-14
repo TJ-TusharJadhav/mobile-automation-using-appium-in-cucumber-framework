@@ -19,19 +19,28 @@
   </properties>
 
   <dependencies>
-    <dependency>
+	 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-api</artifactId>
     <version>8.3.0</version>
 </dependency>
-	 
-   
-	   <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
-<dependency>
-    <groupId>io.appium</groupId>
-    <artifactId>java-client</artifactId>
-    <version>8.6.0</version>
+	  <dependency>
+    <groupId>io.github.ashwithpoojary98</groupId>
+    <artifactId>appium_flutterfinder_java</artifactId>
+    <version>1.0.3</version>
 </dependency>
+    
+    <dependency>
+    <groupId>io.github.5v1988</groupId>
+    <artifactId>appium-flutter-client</artifactId>
+    <version>1.0.4</version>
+</dependency>
+	   <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+ <dependency>
+        <groupId>io.appium</groupId>
+        <artifactId>java-client</artifactId>
+        <version>8.3.0</version>
+    </dependency>
 
 
    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -138,6 +147,7 @@
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.12.0</version>
 		</dependency>
+		
   </dependencies>
 
   <build>

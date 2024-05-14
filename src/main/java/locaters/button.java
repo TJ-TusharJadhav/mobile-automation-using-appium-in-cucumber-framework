@@ -9,4 +9,7 @@ public class button extends TestBase {
 	public String add="//android.widget.Button[@content-desc=\"ADD\"]";
 	public String submit="//android.widget.Button[@content-desc=\"SUBMIT\"]";
 	public String ok="//android.widget.Button[@content-desc=\"OK\"]";
+	public String YES="//android.widget.Button[@content-desc=\"YES\"]";
+	public String NO="//android.widget.Button[@content-desc=\"NO\"]";
+	
 }
